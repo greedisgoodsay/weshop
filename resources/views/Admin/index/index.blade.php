@@ -45,7 +45,7 @@
                     <a onclick="xadmin.open('弹出指定宽高','http://www.baidu.com',500,300)">
                         <i class="iconfont">&#xe6a8;</i>弹出指定宽高</a></dd>
                 <dd>
-                    <a onclick="xadmin.add_tab('在tab打开','member-list.html')">
+                    <a onclick="xadmin.add_tab('在tab打开','member-list.blade.php')">
                         <i class="iconfont">&#xe6b8;</i>在tab打开</a></dd>
                 <dd>
                     <a onclick="xadmin.add_tab('在tab打开刷新','member-del.html',true)">
@@ -88,7 +88,7 @@
                             <cite>统计页面</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('会员列表(静态表格)','member-list.html')">
+                        <a onclick="xadmin.add_tab('会员列表(静态表格)','member-list.blade.php')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员列表(静态表格)</cite></a>
                     </li>
@@ -133,11 +133,6 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite></a>
                     </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('用户意见反馈','admin/opinionList')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>用户意见反馈</cite></a>
-                    </li>
                 </ul>
             </li>
             <li>
@@ -160,25 +155,51 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('多级分类','cate.html')">
+                        <a onclick="xadmin.add_tab('商品分类','admin/showcate')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>多级分类</cite></a>
+                            <cite>查看分类</cite></a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="城市联动">&#xe723;</i>
-                    <cite>城市联动</cite>
+                    <i class="iconfont left-nav-li" lay-tips="商品属性">&#xe723;</i>
+                    <cite>商品属性</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('三级地区联动','city.html')">
+                        <a onclick="xadmin.add_tab('查看属性','/attr/attrList')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>三级地区联动</cite></a>
+                            <cite>查看属性</cite></a>
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont left-nav-li" lay-tips="商品规格">&#xe723;</i>
+                    <cite>商品规格</cite>
+                    <i class="iconfont nav_right">&#xe697;</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a onclick="xadmin.add_tab('查看规格','admin/showstandard')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>查看规格</cite></a>
+                    </li>
+                </ul>
+            </li>
+            {{--<li>--}}
+                {{--<a href="javascript:;">--}}
+                    {{--<i class="iconfont left-nav-li" lay-tips="城市联动">&#xe723;</i>--}}
+                    {{--<cite>城市联动</cite>--}}
+                    {{--<i class="iconfont nav_right">&#xe697;</i></a>--}}
+                {{--<ul class="sub-menu">--}}
+                    {{--<li>--}}
+                        {{--<a onclick="xadmin.add_tab('三级地区联动','city.html')">--}}
+                            {{--<i class="iconfont">&#xe6a7;</i>--}}
+                            {{--<cite>三级地区联动</cite></a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
             <li>
                 <a href="javascript:;">
                     <i class="iconfont left-nav-li" lay-tips="管理员管理">&#xe726;</i>
@@ -191,17 +212,17 @@
                             <cite>管理员列表</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('角色管理','admin-role.html')">
+                        <a onclick="xadmin.add_tab('角色管理','role/list')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>角色管理</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('权限分类','admin-cate.html')">
+                        <a onclick="xadmin.add_tab('权限分类','node/list')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>权限分类</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('权限管理','admin-rule.html')">
+                        <a onclick="xadmin.add_tab('权限管理','do_node/list')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>权限管理</cite></a>
                     </li>
@@ -296,49 +317,49 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="第三方组件">&#xe6b4;</i>
-                    <cite>layui第三方组件</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a onclick="xadmin.add_tab('滑块验证','https://fly.layui.com/extend/sliderVerify/')" target="">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>滑块验证</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('富文本编辑器','https://fly.layui.com/extend/layedit/')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>富文本编辑器</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('eleTree 树组件','https://fly.layui.com/extend/eleTree/')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>eleTree 树组件</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('图片截取','https://fly.layui.com/extend/croppers/')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>图片截取</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('formSelects 4.x 多选框','https://fly.layui.com/extend/formSelects/')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>formSelects 4.x 多选框</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('Magnifier 放大镜','https://fly.layui.com/extend/Magnifier/')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>Magnifier 放大镜</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('notice 通知控件','https://fly.layui.com/extend/notice/')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>notice 通知控件</cite></a>
-                    </li>
-                </ul>
-            </li>
+            {{--<li>--}}
+                {{--<a href="javascript:;">--}}
+                    {{--<i class="iconfont left-nav-li" lay-tips="第三方组件">&#xe6b4;</i>--}}
+                    {{--<cite>layui第三方组件</cite>--}}
+                    {{--<i class="iconfont nav_right">&#xe697;</i></a>--}}
+                {{--<ul class="sub-menu">--}}
+                    {{--<li>--}}
+                        {{--<a onclick="xadmin.add_tab('滑块验证','https://fly.layui.com/extend/sliderVerify/')" target="">--}}
+                            {{--<i class="iconfont">&#xe6a7;</i>--}}
+                            {{--<cite>滑块验证</cite></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a onclick="xadmin.add_tab('富文本编辑器','https://fly.layui.com/extend/layedit/')">--}}
+                            {{--<i class="iconfont">&#xe6a7;</i>--}}
+                            {{--<cite>富文本编辑器</cite></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a onclick="xadmin.add_tab('eleTree 树组件','https://fly.layui.com/extend/eleTree/')">--}}
+                            {{--<i class="iconfont">&#xe6a7;</i>--}}
+                            {{--<cite>eleTree 树组件</cite></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a onclick="xadmin.add_tab('图片截取','https://fly.layui.com/extend/croppers/')">--}}
+                            {{--<i class="iconfont">&#xe6a7;</i>--}}
+                            {{--<cite>图片截取</cite></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a onclick="xadmin.add_tab('formSelects 4.x 多选框','https://fly.layui.com/extend/formSelects/')">--}}
+                            {{--<i class="iconfont">&#xe6a7;</i>--}}
+                            {{--<cite>formSelects 4.x 多选框</cite></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a onclick="xadmin.add_tab('Magnifier 放大镜','https://fly.layui.com/extend/Magnifier/')">--}}
+                            {{--<i class="iconfont">&#xe6a7;</i>--}}
+                            {{--<cite>Magnifier 放大镜</cite></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a onclick="xadmin.add_tab('notice 通知控件','https://fly.layui.com/extend/notice/')">--}}
+                            {{--<i class="iconfont">&#xe6a7;</i>--}}
+                            {{--<cite>notice 通知控件</cite></a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
             <li>
                 <a href="javascript:;">
                     <i class="iconfont left-nav-li" lay-tips="第三方组件">&#xe6b4;</i>
@@ -352,6 +373,7 @@
                     </li>
                 </ul>
             </li>
+
             <li>
                 <a href="javascript:;">
                     <i class="iconfont left-nav-li" lay-tips="第三方组件">&#xe6b4;</i>
@@ -362,6 +384,10 @@
                         <a onclick="xadmin.add_tab('品牌展示','admin/brandmenus')" target="">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>品牌展示</cite></a>
+                    </li>
+                </ul>
+            </li>
+
             <li>
                 <a href="javascript:;">
                     <i class="iconfont left-nav-li" lay-tips="第三方组件">&#xe6b4;</i>
@@ -372,6 +398,11 @@
                         <a onclick="xadmin.add_tab('评论管理','admin/showcomments')" target="">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>评论管理</cite></a>
+                    </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('用户意见反馈','admin/opinionList')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>用户意见反馈</cite></a>
                     </li>
                 </ul>
             </li>

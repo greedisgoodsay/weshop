@@ -37,7 +37,9 @@
                             <select name="cat_id" id="">
                                 <option value="0">顶级分类</option>
                                 @foreach( $catList as $k => $v )
-                                    <option value="{{$v->cat_id}}">{{$v->cat_name}}</option>
+                                    <option value="{{$v->cat_id}}">
+                                        |<?php echo str_repeat('—', $v->level) ?>{{$v->cat_name}}
+                                    </option>
                                 @endforeach
                             </select></div>
                     </div>
@@ -175,6 +177,7 @@
                                         icon: 6
                                     },
                                     function() {
+                                        xadmin.father_reload();
                                         // 获得frame索引
                                         var index = parent.layer.getFrameIndex(window.name);
                                         //关闭当前frame

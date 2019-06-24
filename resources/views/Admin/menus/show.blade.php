@@ -31,7 +31,6 @@
                 <div class="layui-col-md12">
                     <div class="layui-card">
                         <div class="layui-card-body ">
-
                             <form class="layui-form layui-col-space5" method="post">
                                 @csrf
                                 <div class="layui-inline layui-show-xs-block">
@@ -115,6 +114,7 @@
             </div>
         </div> 
     </body>
+    <script src="/adminStatic/js/jquery.min.js"></script>
     <script>
       layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
@@ -141,8 +141,12 @@
         laydate.render({
           elem: '#end' //指定元素
         });
+      });
 
-
+      $(".page-item").on('click',function () {
+          var url = $(this).children().prop('href');
+          var newUrl = url + '&m_title=' + $("input[name='m_title']").val();
+          $(this).children().prop('href',newUrl);
       });
 
        /*用户-停用*/
