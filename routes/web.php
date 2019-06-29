@@ -30,6 +30,8 @@ Route::get("","IndexController@index");
 Route::any("login","LoginController@login");
 //注册功能
 Route::any('register','RegisterController@register');
+//订单列表
+Route::any('orderList',"OrderController@orderShow");
 
 
 /**

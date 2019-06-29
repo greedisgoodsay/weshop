@@ -7,7 +7,7 @@
  */
 namespace App\Http\Controllers;
 
-class OrderController extends Controller
+class PersonController extends Controller
 {
 
     public function InfoShow()

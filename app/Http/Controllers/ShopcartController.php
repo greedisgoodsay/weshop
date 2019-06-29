@@ -7,10 +7,10 @@
  */
 namespace App\Http\Controllers;
 
-class OrderController extends Controller
+class ShopcartController extends Controller
 {
 
-    public function DetailShow()
+    public function ShopShow()
     {
             return view('index.shop.shopcart');
     }
